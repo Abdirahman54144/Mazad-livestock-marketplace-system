@@ -1,0 +1,55 @@
+import type { Listing, Order, Profile, AnimalType } from '@/lib/supabase';
+
+export const FALLBACK_IMAGES: Record<AnimalType, string> = {
+  Camel: 'https://images.unsplash.com/photo-1598113972215-96c018fb1a0b?fm=jpg&q=60&w=800&auto=format&fit=crop',
+  Goat: 'https://images.unsplash.com/photo-1524024973431-2ad916746881?fm=jpg&q=60&w=800&auto=format&fit=crop',
+  Sheep: 'https://images.unsplash.com/photo-1732732508099-4a78c5dac234?fm=jpg&q=60&w=800&auto=format&fit=crop',
+  Cattle: 'https://images.unsplash.com/photo-1681404397581-74a0da15a31e?fm=jpg&q=60&w=800&auto=format&fit=crop',
+};
+
+export const MOCK_ADMIN_PROFILE: Profile = {
+  id: 'a0000000-0000-0000-0000-000000000001',
+  email: 'admin@mazad.local',
+  full_name: 'Admin',
+  role: 'admin',
+  location: 'Dubai',
+  phone: '+971 50 123 4567',
+  created_at: '2025-01-15T08:00:00Z',
+};
+
+export const MOCK_PROFILES: Profile[] = [
+  MOCK_ADMIN_PROFILE,
+  { id: 'b0000000-0000-0000-0000-000000000001', email: 'ahmed@farms.ae', full_name: 'Ahmed Al-Rashid', role: 'seller', location: 'Al Ain', phone: '+971 50 111 2222', created_at: '2025-02-03T10:30:00Z' },
+  { id: 'b0000000-0000-0000-0000-000000000002', email: 'fatima@buyers.ae', full_name: 'Fatima Hassan', role: 'buyer', location: 'Abu Dhabi', phone: '+971 50 333 4444', created_at: '2025-03-12T14:15:00Z' },
+  { id: 'b0000000-0000-0000-0000-000000000003', email: 'omar@desert.ae', full_name: 'Omar Bin Saeed', role: 'seller', location: 'Sharjah', phone: '+971 50 555 6666', created_at: '2025-04-01T09:00:00Z' },
+  { id: 'b0000000-0000-0000-0000-000000000004', email: 'layla@market.ae', full_name: 'Layla Mansour', role: 'buyer', location: 'Dubai', phone: '+971 50 777 8888', created_at: '2025-05-20T11:45:00Z' },
+  { id: 'b0000000-0000-0000-0000-000000000005', email: 'khalid@farms.ae', full_name: 'Khalid Al-Naimi', role: 'seller', location: 'Ras Al Khaimah', phone: '+971 50 999 0000', created_at: '2025-06-10T07:20:00Z' },
+];
+
+const now = Date.now();
+const daysAgo = (n: number) => new Date(now - n * 86400000).toISOString();
+
+export const MOCK_LISTINGS: Listing[] = [
+  { id: 'l001', seller_id: 'b0000000-0000-0000-0000-000000000001', title: 'Champion Racing Camel — 3 Years Old', type: 'Camel', price: 45000, location: 'Al Ain', description: 'Purebred Arabian racing camel, excellent bloodline. Trained for endurance racing. Vaccinated and in peak health. Won 3 local competitions.', image_url: 'https://images.unsplash.com/photo-1598113972215-96c018fb1a0b?fm=jpg&q=60&w=800&auto=format&fit=crop', status: 'available', created_at: daysAgo(1) },
+  { id: 'l002', seller_id: 'b0000000-0000-0000-0000-000000000003', title: 'Premium Dairy Goat Herd — 12 Goats', type: 'Goat', price: 8400, location: 'Sharjah', description: 'Mixed herd of 12 healthy dairy goats (Saanen and Alpine breeds). High milk yield. All vaccinated and dewormed. Ages 1-4 years.', image_url: 'https://images.unsplash.com/photo-1524024973431-2ad916746881?fm=jpg&q=60&w=800&auto=format&fit=crop', status: 'available', created_at: daysAgo(2) },
+  { id: 'l003', seller_id: 'b0000000-0000-0000-0000-000000000001', title: 'Fat-Tailed Sheep — Group of 20', type: 'Sheep', price: 16000, location: 'Al Ain', description: 'Awassi breed fat-tailed sheep, prized for milk and meat. 20 sheep available, all healthy and well-fed. Ages 6 months to 3 years.', image_url: 'https://images.unsplash.com/photo-1732732508099-4a78c5dac234?fm=jpg&q=60&w=800&auto=format&fit=crop', status: 'available', created_at: daysAgo(3) },
+  { id: 'l004', seller_id: 'b0000000-0000-0000-0000-000000000005', title: 'Beef Cattle — Angus Bull', type: 'Cattle', price: 22000, location: 'Ras Al Khaimah', description: 'Purebred Angus bull, 2.5 years old. Excellent temperament, ideal for breeding. Fully vaccinated. Weight approximately 850kg.', image_url: 'https://images.unsplash.com/photo-1681404397581-74a0da15a31e?fm=jpg&q=60&w=800&auto=format&fit=crop', status: 'available', created_at: daysAgo(5) },
+  { id: 'l005', seller_id: 'b0000000-0000-0000-0000-000000000003', title: 'Young Camel Calf — 8 Months', type: 'Camel', price: 12000, location: 'Sharjah', description: 'Healthy camel calf, 8 months old. Good temperament, already weaned. Dam is a champion racer. Vaccinated and registered.', image_url: 'https://images.unsplash.com/photo-1553983658-0d7afeb5c53f?fm=jpg&q=60&w=800&auto=format&fit=crop', status: 'available', created_at: daysAgo(7) },
+  { id: 'l006', seller_id: 'b0000000-0000-0000-0000-000000000005', title: 'Boer Goat Breeding Pair', type: 'Goat', price: 5500, location: 'Ras Al Khaimah', description: 'One male and one female Boer goat, both 2 years old. Excellent for breeding. Strong genetics, disease-free. Registered with breed society.', image_url: 'https://images.unsplash.com/photo-1573578160998-4f4c7b023aec?fm=jpg&q=60&w=800&auto=format&fit=crop', status: 'sold', created_at: daysAgo(10) },
+  { id: 'l007', seller_id: 'b0000000-0000-0000-0000-000000000001', title: 'Merino Sheep Flock — 30 Ewes', type: 'Sheep', price: 27000, location: 'Al Ain', description: '30 Merino ewes, ages 2-5 years. Known for premium wool quality. All pregnant or with lambs. Recently sheared and vaccinated.', image_url: 'https://images.unsplash.com/photo-1652737612003-76e526b0126b?fm=jpg&q=60&w=800&auto=format&fit=crop', status: 'available', created_at: daysAgo(12) },
+  { id: 'l008', seller_id: 'b0000000-0000-0000-0000-000000000003', title: 'Holstein Dairy Cattle — 5 Cows', type: 'Cattle', price: 35000, location: 'Sharjah', description: '5 Holstein-Friesian dairy cows in peak lactation. Average 28L milk/day per cow. All healthy, vaccinated, and TB-tested. Ages 3-5 years.', image_url: 'https://images.unsplash.com/photo-1681404397581-74a0da15a31e?fm=jpg&q=60&w=800&auto=format&fit=crop', status: 'available', created_at: daysAgo(15) },
+  { id: 'l009', seller_id: 'b0000000-0000-0000-0000-000000000005', title: 'White Arabian Camel — Female', type: 'Camel', price: 38000, location: 'Ras Al Khaimah', description: 'Rare white Arabian female camel, 4 years old. Excellent for breeding programs. Gentle temperament, fully vaccinated. Registered pedigree.', image_url: 'https://images.unsplash.com/photo-1598113972215-96c018fb1a0b?fm=jpg&q=60&w=800&auto=format&fit=crop', status: 'available', created_at: daysAgo(18) },
+  { id: 'l010', seller_id: 'b0000000-0000-0000-0000-000000000001', title: 'Nubian Dairy Goats — 8 Does', type: 'Goat', price: 9600, location: 'Al Ain', description: '8 Nubian dairy does, known for high butterfat milk. Ages 1-3 years. All vaccinated, healthy, and producing well. Great for small farms.', image_url: 'https://images.unsplash.com/photo-1588466585717-f8041aec7875?fm=jpg&q=60&w=800&auto=format&fit=crop', status: 'available', created_at: daysAgo(20) },
+  { id: 'l011', seller_id: 'b0000000-0000-0000-0000-000000000003', title: 'Dorper Sheep — 15 Lambs', type: 'Sheep', price: 18000, location: 'Sharjah', description: '15 Dorper lambs, 4-6 months old. Fast-growing meat breed. All weaned, vaccinated, and dewormed. Ready for fattening or breeding.', image_url: 'https://images.unsplash.com/photo-1732732508099-4a78c5dac234?fm=jpg&q=60&w=800&auto=format&fit=crop', status: 'available', created_at: daysAgo(22) },
+  { id: 'l012', seller_id: 'b0000000-0000-0000-0000-000000000005', title: 'Brahman Cattle — Breeding Bull', type: 'Cattle', price: 28000, location: 'Ras Al Khaimah', description: 'Purebred Brahman bull, 3 years old. Heat-tolerant breed ideal for UAE climate. Excellent for crossbreeding programs. Fully vaccinated.', image_url: 'https://images.unsplash.com/photo-1681404397581-74a0da15a31e?fm=jpg&q=60&w=800&auto=format&fit=crop', status: 'sold', created_at: daysAgo(25) },
+];
+
+export const MOCK_ORDERS: Order[] = [
+  { id: 'o001', listing_id: 'l006', buyer_id: 'b0000000-0000-0000-0000-000000000002', seller_id: 'b0000000-0000-0000-0000-000000000005', quantity: 1, total_price: 5500, status: 'completed', notes: 'Pickup arranged for Saturday morning.', created_at: daysAgo(9), listing: MOCK_LISTINGS.find((l) => l.id === 'l006'), buyer: MOCK_PROFILES.find((p) => p.id === 'b0000000-0000-0000-0000-000000000002'), seller: MOCK_PROFILES.find((p) => p.id === 'b0000000-0000-0000-0000-000000000005') },
+  { id: 'o002', listing_id: 'l012', buyer_id: 'b0000000-0000-0000-0000-000000000004', seller_id: 'b0000000-0000-0000-0000-000000000005', quantity: 1, total_price: 28000, status: 'completed', notes: 'Transport arranged via livestock truck.', created_at: daysAgo(24), listing: MOCK_LISTINGS.find((l) => l.id === 'l012'), buyer: MOCK_PROFILES.find((p) => p.id === 'b0000000-0000-0000-0000-000000000004'), seller: MOCK_PROFILES.find((p) => p.id === 'b0000000-0000-0000-0000-000000000005') },
+  { id: 'o003', listing_id: 'l001', buyer_id: 'b0000000-0000-0000-0000-000000000002', seller_id: 'b0000000-0000-0000-0000-000000000001', quantity: 1, total_price: 45000, status: 'pending', notes: 'Interested in viewing before purchase.', created_at: daysAgo(1), listing: MOCK_LISTINGS.find((l) => l.id === 'l001'), buyer: MOCK_PROFILES.find((p) => p.id === 'b0000000-0000-0000-0000-000000000002'), seller: MOCK_PROFILES.find((p) => p.id === 'b0000000-0000-0000-0000-000000000001') },
+  { id: 'o004', listing_id: 'l004', buyer_id: 'b0000000-0000-0000-0000-000000000004', seller_id: 'b0000000-0000-0000-0000-000000000005', quantity: 1, total_price: 22000, status: 'confirmed', notes: 'Will pick up next Tuesday.', created_at: daysAgo(4), listing: MOCK_LISTINGS.find((l) => l.id === 'l004'), buyer: MOCK_PROFILES.find((p) => p.id === 'b0000000-0000-0000-0000-000000000004'), seller: MOCK_PROFILES.find((p) => p.id === 'b0000000-0000-0000-0000-000000000005') },
+  { id: 'o005', listing_id: 'l002', buyer_id: 'b0000000-0000-0000-0000-000000000002', seller_id: 'b0000000-0000-0000-0000-000000000003', quantity: 2, total_price: 16800, status: 'pending', notes: 'Need delivery to Abu Dhabi farm.', created_at: daysAgo(2), listing: MOCK_LISTINGS.find((l) => l.id === 'l002'), buyer: MOCK_PROFILES.find((p) => p.id === 'b0000000-0000-0000-0000-000000000002'), seller: MOCK_PROFILES.find((p) => p.id === 'b0000000-0000-0000-0000-000000000003') },
+  { id: 'o006', listing_id: 'l007', buyer_id: 'b0000000-0000-0000-0000-000000000004', seller_id: 'b0000000-0000-0000-0000-000000000001', quantity: 1, total_price: 27000, status: 'completed', notes: 'Bulk wool purchase, very satisfied.', created_at: daysAgo(11), listing: MOCK_LISTINGS.find((l) => l.id === 'l007'), buyer: MOCK_PROFILES.find((p) => p.id === 'b0000000-0000-0000-0000-000000000004'), seller: MOCK_PROFILES.find((p) => p.id === 'b0000000-0000-0000-0000-000000000001') },
+  { id: 'o007', listing_id: 'l003', buyer_id: 'b0000000-0000-0000-0000-000000000002', seller_id: 'b0000000-0000-0000-0000-000000000001', quantity: 1, total_price: 16000, status: 'cancelled', notes: 'Found a closer supplier.', created_at: daysAgo(3), listing: MOCK_LISTINGS.find((l) => l.id === 'l003'), buyer: MOCK_PROFILES.find((p) => p.id === 'b0000000-0000-0000-0000-000000000002'), seller: MOCK_PROFILES.find((p) => p.id === 'b0000000-0000-0000-0000-000000000001') },
+];

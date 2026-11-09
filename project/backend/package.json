@@ -1,0 +1,17 @@
+{
+  "name": "mazad-backend",
+  "version": "1.0.0",
+  "description": "Express.js backend with SQLite for the Mazad livestock marketplace",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "init-db": "node src/initDb.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.7.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+}
